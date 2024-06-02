@@ -6,27 +6,22 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct RecipeBoxApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    let coreDataManager = CoreDataManager()
+    @StateObject var recipeListViewModel: RecipeListViewModel
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+        init() {
+            let viewModel = RecipeListViewModel(manager: coreDataManager)
+            _recipeListViewModel = StateObject(wrappedValue: viewModel)
         }
-    }()
+
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(recipeListViewModel)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
