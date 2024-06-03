@@ -1,9 +1,9 @@
+// RecipeListView.swift
+// RecipeBox
 //
-//  RecipeListView.swift
-//  RecipeBox
+// Created by Kyle Nabors on 6/2/24.
 //
-//  Created by Kyle Nabors on 6/2/24.
-//
+
 
 import CoreData
 import SwiftUI
@@ -12,98 +12,77 @@ struct RecipeListView: View {
     @EnvironmentObject var vm: RecipeListViewModel
     @State private var searchText = ""
     @State private var selectedRecipe: RecipeEntity?
-    //@State private var recipes: FetchedResults<RecipeEntity>
-    //@Environment(\.managedObjectContext) private var viewContext
-    
-    //    @FetchRequest(
-    //        sortDescriptors: [NSSortDescriptor(keyPath: \RecipeEntity.title, ascending: true)],
-    //        animation: .default)
-    
-    
-    var groupedByDate: [Date: [RecipeEntity]] {
-        let calendar = Calendar.current
-        return Dictionary(grouping: vm.recipes) { recipeEntity in
-            let dateComponents = calendar.dateComponents([.year, .month, .day],
-                                                         from: recipeEntity.timestamp!)
-            return calendar.date(from: dateComponents) ?? Date()
+
+    var sortedRecipes: [RecipeEntity] {
+        vm.recipes.sorted { (recipe1, recipe2) -> Bool in
+            guard let name1 = recipe1.title, let name2 = recipe2.title else {
+                return false
+            }
+            return name1.localizedCaseInsensitiveCompare(name2) == .orderedAscending
         }
     }
-    
-    var headers: [Date] {
-        groupedByDate.map { $0.key }.sorted(by: { $0 > $1 })
-    }
-    
+
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List(selection: $selectedRecipe) {
-                ForEach(headers, id: \.self) { header in
-                    Section(header: Text(header, style: .date)) {
-                        ForEach(groupedByDate[header]!) { recipe in
-                            NavigationLink(value: recipe) {
-                                ListCellView(recipe: recipe)
-                            }
-                        }
-                        
-                        .onDelete(perform: { indexSet in
-                            deleteRecipe(in: header, at: indexSet)
-                        })
+                ForEach(sortedRecipes, id: \.self) { recipe in
+                    NavigationLink(destination: RecipeView()
+                                    .environmentObject(RecipeViewModel(recipe: recipe, context: vm.viewContext))) {
+                        ListCellView(recipe: recipe)
                     }
                 }
+                .onDelete(perform: deleteRecipe)
             }
-            .id(UUID())
             .navigationTitle("Recipes")
             .searchable(text: $searchText)
-            .onChange(of:searchText) {
-                // MARK: Core Data Search
+            .onChange(of: searchText) {
                 vm.searchRecipes(with: searchText)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    
-                    Button {
+                    Button(action: {
                         createNewRecipe()
-                        
-                    } label: {
+                    }) {
                         Image(systemName: "plus")
                             .foregroundColor(Color(UIColor.systemBlue))
                     }
                 }
             }
-            
-        } detail: {
-            if let selectedRecipe {
-                RecipeView(recipe: selectedRecipe)
-            } else {
+
+            if selectedRecipe == nil {
                 Text("Select a Recipe.")
             }
-            
+        }
+        .onAppear {
+            if selectedRecipe == nil, let firstRecipe = vm.recipes.first {
+                selectedRecipe = firstRecipe
+            }
         }
     }
-    
-    //MARK: Core Data Operations
-    
+
     private func createNewRecipe() {
         selectedRecipe = nil
         selectedRecipe = vm.createRecipe()
     }
-    
-    private func deleteRecipe(in header: Date, at offsets: IndexSet) {
+
+    private func deleteRecipe(at offsets: IndexSet) {
         offsets.forEach { index in
-            if let recipeToDelete = groupedByDate[header]?[index] {
-                
-                if recipeToDelete == selectedRecipe {
-                    selectedRecipe = nil
-                }
-                
-                vm.deleteRecipe(recipeToDelete)
+            let recipeToDelete = sortedRecipes[index]
+            if recipeToDelete == selectedRecipe {
+                selectedRecipe = nil
             }
+            vm.deleteRecipe(recipeToDelete)
         }
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let context = PersistenceController.preview.container.viewContext
-//        return ContentView().environment(\.managedObjectContext, context)
-//    }
-//}
+import SwiftUI
+
+struct RecipeListView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewContext = PersistenceController.preview.container.viewContext
+        return RecipeListView()
+            .environmentObject(RecipeListViewModel(manager: PersistenceController.preview))
+            .environment(\.managedObjectContext, viewContext)
+    }
+}

@@ -21,11 +21,11 @@
 		940A40F52C0B9827005F1C80 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A40F42C0B9827005F1C80 /* CoreDataManager.swift */; };
 		940A40F72C0B99FA005F1C80 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A40F62C0B99FA005F1C80 /* Extentions.swift */; };
 		940A40FE2C0B9DFE005F1C80 /* RecipesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 940A40FC2C0B9DFE005F1C80 /* RecipesContainer.xcdatamodeld */; };
-		940A41002C0B9F34005F1C80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A40FF2C0B9F34005F1C80 /* LoginView.swift */; };
-		940A41022C0B9F42005F1C80 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A41012C0B9F42005F1C80 /* LoginViewModel.swift */; };
 		940A41062C0BB3D5005F1C80 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A41052C0BB3D5005F1C80 /* PersistenceController.swift */; };
 		948680B92C0D06930039F666 /* NewIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948680B82C0D06930039F666 /* NewIngredientView.swift */; };
 		948680BB2C0D25190039F666 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948680BA2C0D25190039F666 /* RecipeListView.swift */; };
+		948680BD2C0D37200039F666 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948680BC2C0D37200039F666 /* RecipeViewModel.swift */; };
+		948680BF2C0D585E0039F666 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948680BE2C0D585E0039F666 /* KeyboardResponder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +64,11 @@
 		940A40F42C0B9827005F1C80 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		940A40F62C0B99FA005F1C80 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		940A40FD2C0B9DFE005F1C80 /* RecipesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipesContainer.xcdatamodel; sourceTree = "<group>"; };
-		940A40FF2C0B9F34005F1C80 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		940A41012C0B9F42005F1C80 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		940A41052C0BB3D5005F1C80 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		948680B82C0D06930039F666 /* NewIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIngredientView.swift; sourceTree = "<group>"; };
 		948680BA2C0D25190039F666 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
+		948680BC2C0D37200039F666 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		948680BE2C0D585E0039F666 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,6 @@
 				948680B82C0D06930039F666 /* NewIngredientView.swift */,
 				940A40E82C0B94A1005F1C80 /* ListCellView.swift */,
 				940A40EA2C0B94A9005F1C80 /* TextEditorView.swift */,
-				940A40FF2C0B9F34005F1C80 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +183,7 @@
 			children = (
 				940A40F62C0B99FA005F1C80 /* Extentions.swift */,
 				940A41052C0BB3D5005F1C80 /* PersistenceController.swift */,
+				948680BE2C0D585E0039F666 /* KeyboardResponder.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				940A40EF2C0B94F3005F1C80 /* RecipeListViewModel.swift */,
-				940A41012C0B9F42005F1C80 /* LoginViewModel.swift */,
+				948680BC2C0D37200039F666 /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -336,10 +336,10 @@
 				948680B92C0D06930039F666 /* NewIngredientView.swift in Sources */,
 				940A40F02C0B94F3005F1C80 /* RecipeListViewModel.swift in Sources */,
 				948680BB2C0D25190039F666 /* RecipeListView.swift in Sources */,
+				948680BF2C0D585E0039F666 /* KeyboardResponder.swift in Sources */,
 				940A40B72C0B92F5005F1C80 /* RecipeBoxApp.swift in Sources */,
-				940A41022C0B9F42005F1C80 /* LoginViewModel.swift in Sources */,
-				940A41002C0B9F34005F1C80 /* LoginView.swift in Sources */,
 				940A40F52C0B9827005F1C80 /* CoreDataManager.swift in Sources */,
+				948680BD2C0D37200039F666 /* RecipeViewModel.swift in Sources */,
 				940A40EB2C0B94A9005F1C80 /* TextEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

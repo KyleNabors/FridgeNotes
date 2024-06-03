@@ -9,74 +9,76 @@ import Foundation
 import CoreData
 
 class RecipeListViewModel: ObservableObject {
-
-    let manager: CoreDataManager
     @Published var recipes: [RecipeEntity] = []
     @Published var isDataLoaded = false
+    var viewContext: NSManagedObjectContext
 
-    init(manager: CoreDataManager) {
-        self.manager = manager
+    init(manager: PersistenceController = PersistenceController.shared) {
+        self.viewContext = manager.container.viewContext
         loadData()
     }
-    
-    func loadData() {
-        manager.loadCoreData { [weak self] result in
+
+    private func loadData() {
+        DispatchQueue.global().async { [weak self] in
+            self?.fetchRecipes()
             DispatchQueue.main.async {
-                self?.isDataLoaded = result
-                if result {
-                    self?.fetchRecipes()
-                }
+                self?.isDataLoaded = true
             }
         }
     }
 
-    func fetchRecipes(with searchText: String = "")  {
+    func fetchRecipes() {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
-        
-        if !searchText.isEmpty {
-            request.predicate = NSPredicate(format: "title CONTAINS %@", searchText)
-        }
-
         do {
-            recipes = try manager.container.viewContext.fetch(request)
+            let fetchedRecipes = try viewContext.fetch(request)
+            DispatchQueue.main.async {
+                self.recipes = fetchedRecipes
+            }
         } catch {
-            print("Error fetching recipes: \(error)")
+            print("Failed to fetch recipes: \(error.localizedDescription)")
         }
     }
 
     func createRecipe() -> RecipeEntity {
-        let newRecipe = RecipeEntity(context: manager.container.viewContext)
+        let newRecipe = RecipeEntity(context: viewContext)
         newRecipe.id = UUID()
         newRecipe.timestamp = Date()
         saveContext()
-        fetchRecipes() // Refresh recipess list
-        
+        fetchRecipes()
         return newRecipe
     }
 
     func deleteRecipe(_ recipe: RecipeEntity) {
-        manager.container.viewContext.delete(recipe)
+        viewContext.delete(recipe)
         saveContext()
-        fetchRecipes() // Refresh recipes list
+        fetchRecipes()
     }
 
-    func updateRecipe(_ recipe: RecipeEntity, title: String, content: String) {
-        recipe.title = title
-        recipe.content = content
-        saveContext()
-        fetchRecipes() // Refresh recipes list
-    }
-    
     func searchRecipes(with searchText: String) {
-        fetchRecipes(with: searchText)
+        if searchText.isEmpty {
+            fetchRecipes()
+        } else {
+            let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            do {
+                let fetchedRecipes = try viewContext.fetch(request)
+                DispatchQueue.main.async {
+                    self.recipes = fetchedRecipes
+                }
+            } catch {
+                print("Failed to search recipes: \(error.localizedDescription)")
+            }
+        }
     }
 
     private func saveContext() {
-        do {
-            try manager.container.viewContext.save()
-        } catch {
-            print("Error saving context: \(error)")
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

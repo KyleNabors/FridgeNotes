@@ -4,6 +4,7 @@
 //
 //  Created by Kyle Nabors on 6/1/24.
 //
+
 import CoreData
 
 struct PersistenceController {
@@ -13,19 +14,24 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
 
-        // Create some dummy data for preview purposes
-        let newRecipe = RecipeEntity(context: viewContext)
-        newRecipe.title = "Sample Recipe"
-        newRecipe.content = "Sample Instructions"
-        newRecipe.timestamp = Date()
-        newRecipe.id = UUID()
+        // Create 10 dummy recipes with ingredients and instructions for preview purposes
+        for i in 1...10 {
+            let newRecipe = RecipeEntity(context: viewContext)
+            newRecipe.title = "Sample Recipe \(i)"
+            newRecipe.content = "Sample Instructions for Recipe \(i)"
+            newRecipe.timestamp = Date()
+            newRecipe.id = UUID()
 
-        let newIngredient = IngredientEntity(context: viewContext)
-        newIngredient.name = "Sample Ingredient"
-        newIngredient.amount = 1.0
-        newIngredient.measurement = "grams"
-        newIngredient.step = 1
-        newIngredient.recipe = newRecipe
+            // Create 3 ingredients for each recipe
+            for j in 1...3 {
+                let newIngredient = IngredientEntity(context: viewContext)
+                newIngredient.name = "Sample Ingredient \(j)"
+                newIngredient.amount = Double(j)
+                newIngredient.measurement = "grams"
+                newIngredient.step = Int16(j)  // Convert Int to Int16
+                newIngredient.recipe = newRecipe
+            }
+        }
 
         do {
             try viewContext.save()

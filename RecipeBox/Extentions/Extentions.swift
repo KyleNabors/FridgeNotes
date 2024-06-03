@@ -19,12 +19,11 @@ import CoreData
 //
 
 
-
 extension RecipeEntity {
     var sortedIngredientsArray: [IngredientEntity] {
         let set = ingredients as? Set<IngredientEntity> ?? []
         return set.sorted {
-            $0.name ?? "" > $1.name ?? ""
+            $0.name ?? "" < $1.name ?? ""
         }
     }
 }

@@ -9,14 +9,7 @@ import SwiftUI
 
 @main
 struct RecipeBoxApp: App {
-    let coreDataManager = CoreDataManager()
-    @StateObject var recipeListViewModel: RecipeListViewModel
-
-        init() {
-            let viewModel = RecipeListViewModel(manager: coreDataManager)
-            _recipeListViewModel = StateObject(wrappedValue: viewModel)
-        }
-
+    @StateObject private var recipeListViewModel = RecipeListViewModel(manager: PersistenceController.shared)
 
     var body: some Scene {
         WindowGroup {
