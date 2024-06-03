@@ -14,22 +14,26 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
 
-        // Create 10 dummy recipes with ingredients and instructions for preview purposes
+        // Create dummy pantry ingredients for preview purposes
         for i in 1...10 {
+            let newPantryItem = PantryItemEntity(context: viewContext)
+            newPantryItem.name = "Sample Pantry Ingredient \(i)"
+            newPantryItem.amount = Double(i)
+            newPantryItem.measurement = "grams"
+        }
+
+        // Create some dummy recipes with ingredients
+        for i in 1...5 {
             let newRecipe = RecipeEntity(context: viewContext)
             newRecipe.title = "Sample Recipe \(i)"
-            newRecipe.content = "Sample Instructions for Recipe \(i)"
-            newRecipe.timestamp = Date()
-            newRecipe.id = UUID()
+            newRecipe.steps = "Sample Instructions for Recipe \(i)"
+            newRecipe.date = Date()
 
-            // Create 3 ingredients for each recipe
             for j in 1...3 {
                 let newIngredient = IngredientEntity(context: viewContext)
                 newIngredient.name = "Sample Ingredient \(j)"
                 newIngredient.amount = Double(j)
                 newIngredient.measurement = "grams"
-                newIngredient.step = Int16(j)  // Convert Int to Int16
-                newIngredient.recipe = newRecipe
             }
         }
 

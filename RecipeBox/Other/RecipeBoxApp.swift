@@ -2,6 +2,13 @@
 //  RecipeBoxApp.swift
 //  RecipeBox
 //
+//  Created by Kyle Nabors on 6/3/24.
+//
+
+//
+//  RecipeBoxApp.swift
+//  RecipeBox
+//
 //  Created by Kyle Nabors on 6/1/24.
 //
 
@@ -13,7 +20,7 @@ struct RecipeBoxApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .environmentObject(recipeListViewModel)
         }
     }

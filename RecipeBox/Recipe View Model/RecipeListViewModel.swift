@@ -41,8 +41,7 @@ class RecipeListViewModel: ObservableObject {
 
     func createRecipe() -> RecipeEntity {
         let newRecipe = RecipeEntity(context: viewContext)
-        newRecipe.id = UUID()
-        newRecipe.timestamp = Date()
+        newRecipe.date = Date()
         saveContext()
         fetchRecipes()
         return newRecipe

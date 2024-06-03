@@ -1,5 +1,5 @@
 //
-//  ListCellView.swift
+//  RecipeListCellView.swift
 //  RecipeBox
 //
 //  Created by Kyle Nabors on 6/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListCellView: View {
+struct RecipeListCellView: View {
     var recipe: RecipeEntity
     
     var body: some View {
@@ -16,7 +16,7 @@ struct ListCellView: View {
                 .lineLimit(1)
                 .font(.title3)
                 .fontWeight(.bold)
-            Text(recipe.content ?? "No context available")
+            Text(recipe.steps ?? "No context available")
                 .lineLimit(1)
                 .fontWeight(.light)
         }

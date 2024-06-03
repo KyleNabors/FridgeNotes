@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NewIngredientView: View {
+struct NewRecipeIngredientView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var ingredientName: String = ""
     @State private var ingredientQuantity: String = ""
@@ -66,7 +66,7 @@ struct NewIngredientView: View {
         newIngredient.name = ingredientName
         newIngredient.amount = amount
         newIngredient.measurement = selectedMeasurement
-        newIngredient.recipe = recipe
+        newIngredient.recipeIngredient = recipe
 
         do {
             try viewContext.save()
@@ -81,7 +81,7 @@ struct NewIngredientView: View {
 
 struct NewIngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        NewIngredientView(recipe: RecipeEntity(), isPresented: .constant(true))
+        NewRecipeIngredientView(recipe: RecipeEntity(), isPresented: .constant(true))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

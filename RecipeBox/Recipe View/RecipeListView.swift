@@ -1,9 +1,9 @@
-// RecipeListView.swift
-// RecipeBox
 //
-// Created by Kyle Nabors on 6/2/24.
+//  RecipeListView.swift
+//  RecipeBox
 //
-
+//  Created by Kyle Nabors on 6/3/24.
+//
 
 import CoreData
 import SwiftUI
@@ -28,7 +28,7 @@ struct RecipeListView: View {
                 ForEach(sortedRecipes, id: \.self) { recipe in
                     NavigationLink(destination: RecipeView()
                                     .environmentObject(RecipeViewModel(recipe: recipe, context: vm.viewContext))) {
-                        ListCellView(recipe: recipe)
+                        RecipeListCellView(recipe: recipe)
                     }
                 }
                 .onDelete(perform: deleteRecipe)
@@ -44,7 +44,7 @@ struct RecipeListView: View {
                         createNewRecipe()
                     }) {
                         Image(systemName: "plus")
-                            .foregroundColor(Color(UIColor.systemBlue))
+                            .foregroundColor(Color(.systemBlue))
                     }
                 }
             }

@@ -13,7 +13,7 @@ struct RecipeView: View {
     @EnvironmentObject var vm: RecipeViewModel
     @State private var recipeTitle: String = ""
     @State private var recipeInstructions: String = ""
-    @State private var showNewIngredientForm: Bool = false
+    @State private var showNewRecipeIngredientForm: Bool = false
     @ObservedObject private var keyboardResponder = KeyboardResponder()
 
     var body: some View {
@@ -25,7 +25,7 @@ struct RecipeView: View {
                 .padding()
                 .onAppear {
                     self.recipeTitle = vm.recipe.title ?? ""
-                    self.recipeInstructions = vm.recipe.content ?? ""
+                    self.recipeInstructions = vm.recipe.steps ?? ""
                 }
 
             Section(header: Text("Ingredients")) {
@@ -58,7 +58,7 @@ struct RecipeView: View {
 
             if !keyboardResponder.isKeyboardVisible {
                 Button(action: {
-                    showNewIngredientForm = true
+                    showNewRecipeIngredientForm = true
                 }) {
                     Text("Add New Ingredient")
                         .frame(maxWidth: .infinity)
@@ -70,8 +70,8 @@ struct RecipeView: View {
                 .padding()
             }
         }
-        .sheet(isPresented: $showNewIngredientForm) {
-            NewIngredientView(recipe: vm.recipe, isPresented: $showNewIngredientForm)
+        .sheet(isPresented: $showNewRecipeIngredientForm) {
+            NewRecipeIngredientView(recipe: vm.recipe, isPresented: $showNewRecipeIngredientForm)
                 .environmentObject(vm)
         }
         .onDisappear {
@@ -92,16 +92,15 @@ struct RecipeView_Previews: PreviewProvider {
         let context = PersistenceController.preview.container.viewContext
         let previewRecipe = RecipeEntity(context: context)
         previewRecipe.title = "Sample Recipe"
-        previewRecipe.timestamp = Date()
-        previewRecipe.content = "Sample content"
+        previewRecipe.date = Date()
+        previewRecipe.steps = "Sample content"
 
         for j in 1...3 {
             let newIngredient = IngredientEntity(context: context)
             newIngredient.name = "Sample Ingredient \(j)"
             newIngredient.amount = Double(j)
             newIngredient.measurement = "grams"
-            newIngredient.step = Int16(j)
-            newIngredient.recipe = previewRecipe
+            newIngredient.recipeIngredient = previewRecipe
         }
 
         return RecipeView()
