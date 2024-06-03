@@ -10,36 +10,36 @@ import SwiftUI
 import CoreData
 
 class PantryViewModel: ObservableObject {
-    @Published var ingredients: [IngredientEntity] = []
+    @Published var items: [PantryItemEntity] = []
     private var context: NSManagedObjectContext
 
     init(context: NSManagedObjectContext) {
         self.context = context
-        fetchIngredients()
+        fetchItems()
     }
 
-    func fetchIngredients() {
-        let request: NSFetchRequest<IngredientEntity> = IngredientEntity.fetchRequest()
+    func fetchItems() {
+        let request: NSFetchRequest<PantryItemEntity> = PantryItemEntity.fetchRequest()
         do {
-            ingredients = try context.fetch(request)
+            items = try context.fetch(request)
         } catch {
-            print("Failed to fetch ingredients: \(error)")
+            print("Failed to fetch items: \(error)")
         }
     }
 
-    func addIngredient(name: String, amount: Double, measurement: String) {
-        let newIngredient = IngredientEntity(context: context)
-        newIngredient.name = name
-        newIngredient.amount = amount
-        newIngredient.measurement = measurement
+    func addItem(name: String, amount: Double, measurement: String) {
+        let newItem = PantryItemEntity(context: context)
+        newItem.name = name
+        newItem.amount = amount
+        newItem.measurement = measurement
         saveContext()
-        fetchIngredients()
+        fetchItems()
     }
 
-    func deleteIngredient(_ ingredient: IngredientEntity) {
-        context.delete(ingredient)
+    func deleteItem(_ item: PantryItemEntity) {
+        context.delete(item)
         saveContext()
-        fetchIngredients()
+        fetchItems()
     }
 
     func saveContext() {
@@ -50,4 +50,8 @@ class PantryViewModel: ObservableObject {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+    
+    var managedObjectContext: NSManagedObjectContext {
+           return context
+       }
 }

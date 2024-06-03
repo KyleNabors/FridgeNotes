@@ -44,7 +44,7 @@ struct RecipeView: View {
             Spacer()
 
             Section(header: Text("Recipe")) {
-                TextEditor(text: $recipeInstructions)
+                CustomTextEditor(text: $recipeInstructions)
                     .lineSpacing(2)
                     .cornerRadius(10)
                     .autocapitalization(.words)

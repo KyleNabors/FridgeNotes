@@ -48,10 +48,6 @@ struct RecipeListView: View {
                     }
                 }
             }
-
-            if selectedRecipe == nil {
-                Text("Select a Recipe.")
-            }
         }
         .onAppear {
             if selectedRecipe == nil, let firstRecipe = vm.recipes.first {

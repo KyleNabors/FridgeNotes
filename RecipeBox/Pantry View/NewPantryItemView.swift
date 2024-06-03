@@ -16,28 +16,28 @@ struct NewPantryItemView: View {
     @State private var amount: String = ""
     @State private var selectedUnit: String = "grams"
     
-    let units = ["grams", "kilograms", "ounces", "pounds"]
+    let units = ["grams", "oz", "ml", "cups"]
 
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Ingredient")) {
+                Section(header: Text("Item")) {
                     TextField("Name", text: $name)
                     TextField("Amount", text: $amount)
                         .keyboardType(.decimalPad)
                     Picker("Unit", selection: $selectedUnit) {
                         ForEach(units, id: \.self) { unit in
-                            Text(unit.capitalized).tag(unit)
+                            Text(unit).tag(unit)
                         }
                     }
                 }
                 Section {
                     Button(action: addIngredient) {
-                        Text("Add Ingredient")
+                        Text("Add Item")
                     }
                 }
             }
-            .navigationBarTitle("New Ingredient", displayMode: .inline)
+            .navigationBarTitle("New Item", displayMode: .inline)
             .navigationBarItems(leading: Button("Cancel") {
                 isPresented = false
             })

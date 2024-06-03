@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		944816952C0E718000BB36FE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 944816942C0E718000BB36FE /* Launch Screen.storyboard */; };
+		9448169B2C0E785700BB36FE /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9448169A2C0E785700BB36FE /* CustomTextEditor.swift */; };
 		94B4C62F2C0E262E00D4C4EC /* RecipeBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C62E2C0E262E00D4C4EC /* RecipeBoxApp.swift */; };
 		94B4C6312C0E262E00D4C4EC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6302C0E262E00D4C4EC /* MainView.swift */; };
 		94B4C6352C0E262E00D4C4EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B4C6342C0E262E00D4C4EC /* Assets.xcassets */; };
@@ -54,15 +56,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		94B4C62B2C0E262E00D4C4EC /* RecipeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		944816942C0E718000BB36FE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9448169A2C0E785700BB36FE /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		94B4C62B2C0E262E00D4C4EC /* FridgeNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B4C62E2C0E262E00D4C4EC /* RecipeBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBoxApp.swift; sourceTree = "<group>"; };
 		94B4C6302C0E262E00D4C4EC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		94B4C6342C0E262E00D4C4EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94B4C6362C0E262E00D4C4EC /* RecipeBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecipeBox.entitlements; sourceTree = "<group>"; };
 		94B4C6382C0E262E00D4C4EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		94B4C63E2C0E262E00D4C4EC /* RecipeBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B4C63E2C0E262E00D4C4EC /* FridgeNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B4C6422C0E262E00D4C4EC /* RecipeBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBoxTests.swift; sourceTree = "<group>"; };
-		94B4C6482C0E262E00D4C4EC /* RecipeBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B4C6482C0E262E00D4C4EC /* FridgeNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B4C64C2C0E262E00D4C4EC /* RecipeBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBoxUITests.swift; sourceTree = "<group>"; };
 		94B4C64E2C0E262E00D4C4EC /* RecipeBoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		94B4C65F2C0E269500D4C4EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -125,9 +129,9 @@
 		94B4C62C2C0E262E00D4C4EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94B4C62B2C0E262E00D4C4EC /* RecipeBox.app */,
-				94B4C63E2C0E262E00D4C4EC /* RecipeBoxTests.xctest */,
-				94B4C6482C0E262E00D4C4EC /* RecipeBoxUITests.xctest */,
+				94B4C62B2C0E262E00D4C4EC /* FridgeNotes.app */,
+				94B4C63E2C0E262E00D4C4EC /* FridgeNotesTests.xctest */,
+				94B4C6482C0E262E00D4C4EC /* FridgeNotesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +184,7 @@
 				94B4C62E2C0E262E00D4C4EC /* RecipeBoxApp.swift */,
 				94B4C6342C0E262E00D4C4EC /* Assets.xcassets */,
 				94B4C6362C0E262E00D4C4EC /* RecipeBox.entitlements */,
+				944816942C0E718000BB36FE /* Launch Screen.storyboard */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				94B4C65E2C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld */,
 				94B4C6892C0E463900D4C4EC /* PersistenceController.swift */,
 				94B4C6912C0E5C1200D4C4EC /* CoreDataManager.swift */,
+				9448169A2C0E785700BB36FE /* CustomTextEditor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94B4C62A2C0E262E00D4C4EC /* RecipeBox */ = {
+		94B4C62A2C0E262E00D4C4EC /* FridgeNotes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94B4C6522C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBox" */;
+			buildConfigurationList = 94B4C6522C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotes" */;
 			buildPhases = (
 				94B4C6272C0E262E00D4C4EC /* Sources */,
 				94B4C6282C0E262E00D4C4EC /* Frameworks */,
@@ -276,14 +282,14 @@
 			);
 			dependencies = (
 			);
-			name = RecipeBox;
+			name = FridgeNotes;
 			productName = RecipeBox;
-			productReference = 94B4C62B2C0E262E00D4C4EC /* RecipeBox.app */;
+			productReference = 94B4C62B2C0E262E00D4C4EC /* FridgeNotes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		94B4C63D2C0E262E00D4C4EC /* RecipeBoxTests */ = {
+		94B4C63D2C0E262E00D4C4EC /* FridgeNotesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94B4C6552C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBoxTests" */;
+			buildConfigurationList = 94B4C6552C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotesTests" */;
 			buildPhases = (
 				94B4C63A2C0E262E00D4C4EC /* Sources */,
 				94B4C63B2C0E262E00D4C4EC /* Frameworks */,
@@ -294,14 +300,14 @@
 			dependencies = (
 				94B4C6402C0E262E00D4C4EC /* PBXTargetDependency */,
 			);
-			name = RecipeBoxTests;
+			name = FridgeNotesTests;
 			productName = RecipeBoxTests;
-			productReference = 94B4C63E2C0E262E00D4C4EC /* RecipeBoxTests.xctest */;
+			productReference = 94B4C63E2C0E262E00D4C4EC /* FridgeNotesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		94B4C6472C0E262E00D4C4EC /* RecipeBoxUITests */ = {
+		94B4C6472C0E262E00D4C4EC /* FridgeNotesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94B4C6582C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBoxUITests" */;
+			buildConfigurationList = 94B4C6582C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotesUITests" */;
 			buildPhases = (
 				94B4C6442C0E262E00D4C4EC /* Sources */,
 				94B4C6452C0E262E00D4C4EC /* Frameworks */,
@@ -312,9 +318,9 @@
 			dependencies = (
 				94B4C64A2C0E262E00D4C4EC /* PBXTargetDependency */,
 			);
-			name = RecipeBoxUITests;
+			name = FridgeNotesUITests;
 			productName = RecipeBoxUITests;
-			productReference = 94B4C6482C0E262E00D4C4EC /* RecipeBoxUITests.xctest */;
+			productReference = 94B4C6482C0E262E00D4C4EC /* FridgeNotesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -340,7 +346,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94B4C6262C0E262E00D4C4EC /* Build configuration list for PBXProject "RecipeBox" */;
+			buildConfigurationList = 94B4C6262C0E262E00D4C4EC /* Build configuration list for PBXProject "FridgeNotes" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -353,9 +359,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94B4C62A2C0E262E00D4C4EC /* RecipeBox */,
-				94B4C63D2C0E262E00D4C4EC /* RecipeBoxTests */,
-				94B4C6472C0E262E00D4C4EC /* RecipeBoxUITests */,
+				94B4C62A2C0E262E00D4C4EC /* FridgeNotes */,
+				94B4C63D2C0E262E00D4C4EC /* FridgeNotesTests */,
+				94B4C6472C0E262E00D4C4EC /* FridgeNotesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -365,6 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				944816952C0E718000BB36FE /* Launch Screen.storyboard in Resources */,
 				94B4C6392C0E262E00D4C4EC /* Preview Assets.xcassets in Resources */,
 				94B4C6352C0E262E00D4C4EC /* Assets.xcassets in Resources */,
 			);
@@ -391,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9448169B2C0E785700BB36FE /* CustomTextEditor.swift in Sources */,
 				94B4C6682C0E408A00D4C4EC /* RecipeListViewModel.swift in Sources */,
 				94B4C66E2C0E40CA00D4C4EC /* PantryViewModel.swift in Sources */,
 				94B4C6902C0E489100D4C4EC /* KeyboardResponder.swift in Sources */,
@@ -438,12 +446,12 @@
 /* Begin PBXTargetDependency section */
 		94B4C6402C0E262E00D4C4EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94B4C62A2C0E262E00D4C4EC /* RecipeBox */;
+			target = 94B4C62A2C0E262E00D4C4EC /* FridgeNotes */;
 			targetProxy = 94B4C63F2C0E262E00D4C4EC /* PBXContainerItemProxy */;
 		};
 		94B4C64A2C0E262E00D4C4EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94B4C62A2C0E262E00D4C4EC /* RecipeBox */;
+			target = 94B4C62A2C0E262E00D4C4EC /* FridgeNotes */;
 			targetProxy = 94B4C6492C0E262E00D4C4EC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -569,6 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RecipeBox/RecipeBox.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeBox/Preview Content\"";
@@ -576,6 +585,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FridgeNotes;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -591,10 +602,11 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kylenabors.RecipeBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylenabors.FridgeNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,6 +619,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RecipeBox/RecipeBox.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeBox/Preview Content\"";
@@ -614,6 +627,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FridgeNotes;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -629,10 +644,11 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kylenabors.RecipeBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylenabors.FridgeNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -658,7 +674,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeBox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeBox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FridgeNotes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FridgeNotes";
 			};
 			name = Debug;
 		};
@@ -681,7 +697,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeBox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeBox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FridgeNotes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FridgeNotes";
 			};
 			name = Release;
 		};
@@ -732,7 +748,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94B4C6262C0E262E00D4C4EC /* Build configuration list for PBXProject "RecipeBox" */ = {
+		94B4C6262C0E262E00D4C4EC /* Build configuration list for PBXProject "FridgeNotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B4C6502C0E262E00D4C4EC /* Debug */,
@@ -741,7 +757,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B4C6522C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBox" */ = {
+		94B4C6522C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B4C6532C0E262E00D4C4EC /* Debug */,
@@ -750,7 +766,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B4C6552C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBoxTests" */ = {
+		94B4C6552C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B4C6562C0E262E00D4C4EC /* Debug */,
@@ -759,7 +775,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B4C6582C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "RecipeBoxUITests" */ = {
+		94B4C6582C0E262E00D4C4EC /* Build configuration list for PBXNativeTarget "FridgeNotesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B4C6592C0E262E00D4C4EC /* Debug */,

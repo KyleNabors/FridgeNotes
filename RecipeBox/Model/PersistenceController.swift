@@ -14,6 +14,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        addSampleData(to: viewContext)
 
         // Create dummy pantry ingredients for preview purposes
         for i in 1...10 {
@@ -35,7 +36,7 @@ struct PersistenceController {
                 newIngredient.name = "Sample Ingredient \(j)"
                 newIngredient.amount = Double(j)
                 newIngredient.measurement = "grams"
-                newRecipe.addToIngredients(newIngredient) // Use the generated accessor
+                newRecipe.addToIngredientRecipe(newIngredient) // Use the correct accessor
             }
         }
 
@@ -62,4 +63,40 @@ struct PersistenceController {
             }
         }
     }
-}
+    
+    private func checkAndAddSampleData() {
+           let context = container.viewContext
+           let fetchRequest: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+           
+           do {
+               let count = try context.count(for: fetchRequest)
+               if count == 0 {
+                   PersistenceController.addSampleData(to: context)
+               }
+           } catch {
+               fatalError("Failed to fetch count of recipes: \(error)")
+           }
+       }
+
+       private static func addSampleData(to context: NSManagedObjectContext) {
+           let sampleRecipe = RecipeEntity(context: context)
+           sampleRecipe.title = "Sample Recipe"
+           sampleRecipe.date = Date()
+           sampleRecipe.steps = "These are the sample steps for the sample recipe."
+
+           for i in 1...3 {
+               let ingredient = IngredientEntity(context: context)
+               ingredient.name = "Sample Ingredient \(i)"
+               ingredient.amount = Double(i)
+               ingredient.measurement = "grams"
+               sampleRecipe.addToIngredientRecipe(ingredient)
+           }
+
+           do {
+               try context.save()
+           } catch {
+               let nsError = error as NSError
+               fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+           }
+       }
+   }
