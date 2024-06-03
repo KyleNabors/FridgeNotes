@@ -17,3 +17,16 @@ extension View {
     }
 }
 
+extension RecipeEntity {
+    @objc(addIngredientsObject:)
+    @NSManaged public func addToIngredients(_ value: IngredientEntity)
+
+    @objc(removeIngredientsObject:)
+    @NSManaged public func removeFromIngredients(_ value: IngredientEntity)
+
+    @objc(addIngredients:)
+    @NSManaged public func addToIngredients(_ values: NSSet)
+
+    @objc(removeIngredients:)
+    @NSManaged public func removeFromIngredients(_ values: NSSet)
+}

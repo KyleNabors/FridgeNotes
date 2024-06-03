@@ -30,7 +30,7 @@ struct RecipeView: View {
 
             Section(header: Text("Ingredients")) {
                 List {
-                    ForEach(vm.recipe.sortedIngredientsArray, id: \.self) { ingredient in
+                    ForEach(vm.sortedIngredientsArray, id: \.self) { ingredient in
                         HStack {
                             Text(ingredient.name ?? "")
                             Spacer()
@@ -81,7 +81,7 @@ struct RecipeView: View {
 
     private func deleteIngredients(at offsets: IndexSet) {
         for index in offsets {
-            let ingredient = vm.recipe.sortedIngredientsArray[index]
+            let ingredient = vm.sortedIngredientsArray[index]
             vm.deleteIngredient(ingredient)
         }
     }

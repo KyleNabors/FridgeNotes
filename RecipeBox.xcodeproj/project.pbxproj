@@ -14,7 +14,7 @@
 		94B4C6432C0E262E00D4C4EC /* RecipeBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6422C0E262E00D4C4EC /* RecipeBoxTests.swift */; };
 		94B4C64D2C0E262E00D4C4EC /* RecipeBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C64C2C0E262E00D4C4EC /* RecipeBoxUITests.swift */; };
 		94B4C64F2C0E262E00D4C4EC /* RecipeBoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C64E2C0E262E00D4C4EC /* RecipeBoxUITestsLaunchTests.swift */; };
-		94B4C6602C0E269500D4C4EC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C65E2C0E269500D4C4EC /* Model.xcdatamodeld */; };
+		94B4C6602C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C65E2C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld */; };
 		94B4C6662C0E407C00D4C4EC /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6652C0E407B00D4C4EC /* RecipeListView.swift */; };
 		94B4C6682C0E408A00D4C4EC /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6672C0E408A00D4C4EC /* RecipeListViewModel.swift */; };
 		94B4C66C2C0E40C000D4C4EC /* PantryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C66B2C0E40C000D4C4EC /* PantryView.swift */; };
@@ -33,6 +33,7 @@
 		94B4C68A2C0E463900D4C4EC /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6892C0E463900D4C4EC /* PersistenceController.swift */; };
 		94B4C68E2C0E481900D4C4EC /* RecipeListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C68D2C0E481900D4C4EC /* RecipeListCellView.swift */; };
 		94B4C6902C0E489100D4C4EC /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C68F2C0E489100D4C4EC /* KeyboardResponder.swift */; };
+		94B4C6922C0E5C1200D4C4EC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C6912C0E5C1200D4C4EC /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		94B4C6892C0E463900D4C4EC /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		94B4C68D2C0E481900D4C4EC /* RecipeListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListCellView.swift; sourceTree = "<group>"; };
 		94B4C68F2C0E489100D4C4EC /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		94B4C6912C0E5C1200D4C4EC /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +196,9 @@
 		94B4C65D2C0E268300D4C4EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				94B4C65E2C0E269500D4C4EC /* Model.xcdatamodeld */,
+				94B4C65E2C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld */,
 				94B4C6892C0E463900D4C4EC /* PersistenceController.swift */,
+				94B4C6912C0E5C1200D4C4EC /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				94B4C6882C0E460400D4C4EC /* Extentions.swift in Sources */,
 				94B4C6742C0E40ED00D4C4EC /* RecipeViewModel.swift in Sources */,
 				94B4C6702C0E40D800D4C4EC /* RecipeView.swift in Sources */,
+				94B4C6922C0E5C1200D4C4EC /* CoreDataManager.swift in Sources */,
 				94B4C6832C0E41C200D4C4EC /* LoginViewModel.swift in Sources */,
 				94B4C6722C0E40E000D4C4EC /* NewRecipeView.swift in Sources */,
 				94B4C6782C0E411300D4C4EC /* NewRecipeIngredientView.swift in Sources */,
@@ -406,7 +410,7 @@
 				94B4C68E2C0E481900D4C4EC /* RecipeListCellView.swift in Sources */,
 				94B4C6802C0E41A100D4C4EC /* LoginView.swift in Sources */,
 				94B4C62F2C0E262E00D4C4EC /* RecipeBoxApp.swift in Sources */,
-				94B4C6602C0E269500D4C4EC /* Model.xcdatamodeld in Sources */,
+				94B4C6602C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld in Sources */,
 				94B4C67A2C0E412600D4C4EC /* NewRecipeItemViewModel.swift in Sources */,
 				94B4C6762C0E40F400D4C4EC /* NewRecipeViewModel.swift in Sources */,
 			);
@@ -767,14 +771,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		94B4C65E2C0E269500D4C4EC /* Model.xcdatamodeld */ = {
+		94B4C65E2C0E269500D4C4EC /* RecipeBoxContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				94B4C65F2C0E269500D4C4EC /* Model.xcdatamodel */,
 			);
 			currentVersion = 94B4C65F2C0E269500D4C4EC /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = "/Users/kylenabors/Documents/Swift Projects/RecipeBox/RecipeBox/Model/Model.xcdatamodeld";
+			path = RecipeBoxContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

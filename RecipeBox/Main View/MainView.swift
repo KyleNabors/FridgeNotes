@@ -16,12 +16,18 @@ struct MainView: View {
                     Image(systemName: "book")
                     Text("Recipes")
                 }
-
+            
             PantryView()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Pantry")
                 }
         }
+    }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
     }
 }

@@ -17,12 +17,11 @@ class RecipeViewModel: ObservableObject {
         if let recipe = recipe {
             self.recipe = recipe
         } else {
-            // Create a new RecipeEntity if none is provided
-            var newRecipe = RecipeEntity(context: context)
-            newRecipe.title = ""
-            newRecipe.date = Date()
-            newRecipe.steps = ""
-            self.recipe = newRecipe = ""
+            let entityDescription = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: context)!
+            self.recipe = RecipeEntity(entity: entityDescription, insertInto: context)
+            self.recipe.title = ""
+            self.recipe.date = Date()
+            self.recipe.steps = ""
         }
     }
 
@@ -37,6 +36,8 @@ class RecipeViewModel: ObservableObject {
         newIngredient.name = name
         newIngredient.amount = amount
         newIngredient.measurement = measurement
+        newIngredient.recipeIngredient = recipe
+        recipe.addToIngredients(newIngredient)
         saveContext()
     }
 
@@ -49,13 +50,15 @@ class RecipeViewModel: ObservableObject {
         do {
             try context.save()
         } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
 
     var sortedIngredientsArray: [IngredientEntity] {
-        let ingredientsArray = recipeIngredient.ingredients?.allObjects as? [IngredientEntity] ?? []
-        return ingredientsArray.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+        let ingredientSet = recipe.ingredientRecipe as? Set<IngredientEntity> ?? []
+        let ingredientArray = Array(ingredientSet)
+        return ingredientArray.sorted(by: { $0.name ?? "" < $1.name ?? "" })
     }
 }
+

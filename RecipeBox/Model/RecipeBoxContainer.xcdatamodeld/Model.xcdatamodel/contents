@@ -4,7 +4,7 @@
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="measurement" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="recipeIngredient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="ingredientRecipe" inverseEntity="RecipeEntity"/>
+        <relationship name="recipeIngredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="ingredientRecipe" inverseEntity="RecipeEntity"/>
     </entity>
     <entity name="PantryItemEntity" representedClassName="PantryItemEntity" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -14,10 +14,9 @@
     </entity>
     <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="ingredients" optional="YES" attributeType="Transformable"/>
         <attribute name="steps" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="ingredientRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IngredientEntity" inverseName="recipeIngredient" inverseEntity="IngredientEntity"/>
+        <relationship name="ingredientRecipe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientEntity" inverseName="recipeIngredient" inverseEntity="IngredientEntity"/>
         <relationship name="pantryitemRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PantryItemEntity" inverseName="recipePantryitem" inverseEntity="PantryItemEntity"/>
     </entity>
 </model>

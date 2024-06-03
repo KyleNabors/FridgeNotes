@@ -16,12 +16,15 @@ import SwiftUI
 
 @main
 struct RecipeBoxApp: App {
-    @StateObject private var recipeListViewModel = RecipeListViewModel(manager: PersistenceController.shared)
+    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(recipeListViewModel)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(PantryViewModel(context: persistenceController.container.viewContext))
+                .environmentObject(RecipeViewModel(context: persistenceController.container.viewContext))
+                .environmentObject(RecipeListViewModel()) // Add this line
         }
     }
 }

@@ -59,3 +59,10 @@ struct NewPantryItemView: View {
         }
     }
 }
+
+struct NewPantryItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewPantryItemView(isPresented: .constant(true))
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
